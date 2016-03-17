@@ -1,0 +1,17 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700|Alegreya+Sans:400,500);
+
+body {
+  font-family: sans-serif;
+}
+
+h1 {
+  font-family: 'Alegreya Sans', sans-serif;
+}
+
+#stock-ticker {
+  width: 130px;
+}
+
+h5 {
+  display: inline;
+}

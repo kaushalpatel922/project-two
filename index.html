@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>StocksInfo API</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+    <script src="main.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <h1> StocksInfo API</h1>
+
+    <form action="stocks-form" id="stocks-form">
+      <label for="stocks-label">
+        <h5>Stock Ticker</h5>
+        <input type="text" id=stock-ticker placeholder="Enter Company Symbol">
+      </label>
+      <button id="search-button" type="button">Look Up</button>
+    </form>
+
+    <div id="stocks-info"></div>
+
+    <script id="stocks-template" type="x-handlebars-template">
+      <h5>Company: </h5>
+      <h5>Symbol: </h5>
+      <h5>Current Price: </h5>
+      <h5>Change: </h5>
+      <h5>Change %: </h5>
+      <h5>Last Time: </h5>
+      <h5>Market Cap: </h5>
+      <h5>Prev Close: </h5>
+      <h5>Open Price: </h5>
+      <h5>Day Low: </h5>
+      <h5>Day High: </h5>
+      <h5>Year Low: </h5>
+      <h5>Year High: </h5>
+      <h5>Todays Volume: </h5>
+      <h5>Avg Vol(3m): </h5>
+      <h5>1yr Target: </h5>
+      <h5>Div. Yield: </h5>
+
+
+    </script>
+
+  </body>
+</html>
