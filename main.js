@@ -56,8 +56,11 @@ window.onload = function () {
     console.log(stocksData.dividendYield);
 
 
-    var source = document.getElementById('id')
-
+    var source = document.getElementById("stocks-template").innerHTML;
+    var template = Handlebars.compile(source);
+    var compliedHtml = template(stocksData);
+    var stocksInfo = document.getElementById("stocks-info");
+    stocksInfo.innerHTML = compliedHtml;
 
 
     }) //end of done function
