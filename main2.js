@@ -4,12 +4,56 @@ window.onload = function () {
   var searchButton = document.getElementById("search-button");
   searchButton.addEventListener("click", function () {
 
+    function drawChart() {
+
+      var chartData = google.visualization.arrayToDataTable(data);
+
+      var chart = new google.visualization.LineChart(document.getElementById('id'));
+      chart.draw(chartData, options);
+
+    }
+
+    function getData(dataRange) {
+
+      var dataArray = [
+        ['Date', 'Stock Value'],
+      ];
+
+      var userInput = document.getElementById("stock-ticker").value;
+      //var stringQuery = "select * from yahoo.finance.quotes where symbol IN "
+      var stringQuery = 'select * from yahoo.finance.historicaldata where symbol = "'+ userInput+ '"'+ 'and startDate = "2015-03-22" and endDate = "2016-03-21"';
+      // var queryToMake = stringQuery + "(%22" + userInput + "%22)";
+      var ending = "&format=json&env=http://datatables.org/alltables.env"
+      var query = "http://query.yahooapis.com/v1/public/yql?q=" + stringQuery + ending;
+
+
+
+      if(dataRange === "year") {
+        var stringQuery = 'select * from yahoo.finance.historicaldata where symbol = "'+ userInput+ '"'+ 'and startDate = "2015-03-22" and endDate = "2016-03-21"';
+      } else if (dataRange == "halfyear") {
+        var stringQuery = 'select * from yahoo.finance.historicaldata where symbol = "'+ userInput+ '"'+ 'and startDate = "2015-03-22" and endDate = "2016-03-21"';
+
+      }
+      $.getJSON(query, function(response) {
+        var stockArray = response.query.results.quote;
+        for (var i = 0; i < stockArray.length; i++) {
+          var currentObject = stockArray[i];
+          console.log(currentObject.Close);
+          var pushedArray = [currentObject.date,currentObject.Close];
+          dataArray[i+1] = pushedArray;
+        }
+        return dataArray;
+      });
+
+    }
     var userInput = document.getElementById("stock-ticker").value;
     //var stringQuery = "select * from yahoo.finance.quotes where symbol IN "
     var stringQuery = 'select * from yahoo.finance.historicaldata where symbol = "'+ userInput+ '"'+ 'and startDate = "2015-03-22" and endDate = "2016-03-21"';
     // var queryToMake = stringQuery + "(%22" + userInput + "%22)";
     var ending = "&format=json&env=http://datatables.org/alltables.env"
+
     var query = "http://query.yahooapis.com/v1/public/yql?q=" + stringQuery + ending;
+
 
     $.ajax({
         url: query,
