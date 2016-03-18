@@ -9,37 +9,45 @@
     <script src="main.js" charset="utf-8"></script>
   </head>
   <body>
-    <h1> StocksInfo API</h1>
+    <h1> StocksInfo</h1>
 
     <form action="stocks-form" id="stocks-form">
       <label for="stocks-label">
         <h5>Stock Ticker</h5>
         <input type="text" id=stock-ticker placeholder="Enter Company Symbol">
       </label>
-      <button id="search-button" type="button">Look Up</button>
+      <button id="search-button" class="search-button"type="button">Look Up</button>
     </form>
 
-    <div id="stocks-info"></div>
+    <div id="stocks-info">
+    <h5><script src="http://charts.wikinvest.com/wikinvest/wikichart/javascript/scripts.php" type="text/javascript"></script><div id="wikichartContainer_510923CB-F7E3-D186-C6CA-8B2E607547B8"><div id="wikichartContainer_510923CB-F7E3-D186-C6CA-8B2E607547B8_noFlash" style="width:400px; display:none;"><a href="http://get.adobe.com/flashplayer/"><img src="http://cdn.wikinvest.com/wikinvest/images/adobe_flash_logo.gif" alt="Flash" style="border-width: 0px;"/><br/>Flash Player 9 or higher is required to view the chart<br/><strong>Click here to download Flash Player now</strong></a></div></div><script type="text/javascript">if (typeof(embedWikichart) != "undefined") {embedWikichart("http://charts.wikinvest.com/WikiChartMini.swf","wikichartContainer_510923CB-F7E3-D186-C6CA-8B2E607547B8","400","400",{"partner":"wikinvest","embedCodeDate":"2016-3-18","ticker":"NASDAQ:AAPL","showNewsIcons":"true","rollingDate":"5 days"},{});}</script><div style="font-size:9px;text-align:right;width:400px;font-family:Verdana"><a href="http://www.wikinvest.com/chart/NASDAQ:AAPL" style="text-decoration:underline; color:#0000ee;">View the full AAPL chart</a> at <a href="http://www.wikinvest.com/">Wikinvest</a></div></h5>
+    
+    </div>
 
-    <script id="stocks-template" type="x-handlebars-template">
-      <p>Company: {{Name}}</p>
-      <p>Symbol: {{symbol}}</p>
-      <p>Current Price: {{currentPrice}}</p>
-      <p>Change: {{change}}</p>
-      <p>Change %: {{changePercent}}</p>
-      <p>Last Time: {{time}}</p>
-      <p>Market Cap: {{marketCap}}</p>
-      <p>Prev Close: {{previousClose}}</p>
-      <p>Open Price: {{openPrice}}</p>
-      <p>Day Low: {{daysLow}}</p>
-      <p>Day High: {{daysHigh}}</p>
-      <p>Year Low: {{yearsLow}}</p>
-      <p>Year High: {{yearsHigh}}</p>
-      <p>Todays Volume: {{todayVolume}}</p>
-      <p>Avg Vol(3m): {{threeMoAvg}}</p>
-      <p>1yr Target: {{oneYearTarget}}</p>
-      <p>Div. Yield: {{dividendYield}}</h5>
+    <script id="stocks-template" class="stocks"type="x-handlebars-template">
+      <div id="one">
+        <p>Company: {{Name}}</p>
+        <p>Symbol: {{symbol}}</p>
+        <p>Current Price: {{currentPrice}}</p>
+        <p>Change: {{change}}</p>
+        <p>Change %: {{changePercent}}</p>
+        <p>Last Time: {{time}}</p>
+        <p>Market Cap: {{marketCap}}</p>
+        <p>Prev Close: {{previousClose}}</p>
+      </div>
 
+      <div id="two">
+
+        <p>Open Price: {{openPrice}}</p>
+        <p>Day Low: {{daysLow}}</p>
+        <p>Day High: {{daysHigh}}</p>
+        <p>Year Low: {{yearsLow}}</p>
+        <p>Year High: {{yearsHigh}}</p>
+        <p>Todays Volume: {{todayVolume}}</p>
+        <p>Avg Vol(3m): {{threeMoAvg}}</p>
+        <p>1yr Target: {{oneYearTarget}}</p>
+        <p>Div. Yield: {{dividendYield}}</h5>
+      </div>
 
     </script>
 

@@ -2,16 +2,54 @@
 
 body {
   font-family: sans-serif;
+  margin: 0 auto;
+  box-sizing: border-box;
+  text-align: center;
+  padding-top: 5%;
 }
 
 h1 {
   font-family: 'Alegreya Sans', sans-serif;
+	src: url("fonts/Museo300-Regular.eot");
+  font-size: 3rem;
+  letter-spacing: 3px;
 }
 
 #stock-ticker {
-  width: 130px;
+  width: 230px;
+  font-size: 1rem;
+  border-width: 1.5px;
+  margin: 10px;
+}
+
+#stocks-info {
+  display: flex;
+  justify-content: space-around;
+
 }
 
 h5 {
   display: inline;
+  font-size: 1.2rem;
+}
+
+#search-button {
+  font-size: 1rem;
+  width: 110px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#one {
+  background-color: black;
+  color: white;
+  width:200px;
+  border-radius: 10px;
+}
+
+#two {
+  background-color: black;
+  color: white;
+  width: 200px;
+  border-radius: 10px;
 }

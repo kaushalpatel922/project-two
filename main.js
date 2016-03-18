@@ -12,20 +12,27 @@ window.onload = function () {
 
     $.ajax({
         url: query,
-    }).done(function(response){
+    }).done(function alpha(response){
         console.log("done")
         console.log(response);
 
     var stocksData = {
     };
 
+    // $(".search-button").click(function(){
+    //   $("#stocks-info").fadeIn(10000);
+    // });
 
-    function
+
+
     stocksData.Name = response.query.results.quote.Name;
     stocksData.symbol = (response.query.results.quote.symbol).toUpperCase();
     stocksData.currentPrice = response.query.results.quote.LastTradePriceOnly;
     stocksData.change = response.query.results.quote.Change;
     stocksData.changePercent = response.query.results.quote.ChangeinPercent;
+    if(stocksData.changePercent > 0) {
+
+    }
     stocksData.time = response.query.results.quote.LastTradeTime;
     stocksData.marketCap = response.query.results.quote.MarketCapitalization;
     stocksData.previousClose = response.query.results.quote.PreviousClose;
@@ -57,14 +64,13 @@ window.onload = function () {
     console.log(stocksData.oneYearTarget);
     console.log(stocksData.dividendYield);
 
-
     var source = document.getElementById("stocks-template").innerHTML;
     var template = Handlebars.compile(source);
     var compliedHtml = template(stocksData);
     var stocksInfo = document.getElementById("stocks-info");
     stocksInfo.innerHTML = compliedHtml;
 
-
+    //setTimeout(alpha,3000); - can't rerun
     }) //end of done function
 
 
