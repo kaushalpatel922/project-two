@@ -19,8 +19,10 @@ window.onload = function () {
     var stocksData = {
     };
 
+
+    function
     stocksData.Name = response.query.results.quote.Name;
-    stocksData.symbol = response.query.results.quote.symbol;
+    stocksData.symbol = (response.query.results.quote.symbol).toUpperCase();
     stocksData.currentPrice = response.query.results.quote.LastTradePriceOnly;
     stocksData.change = response.query.results.quote.Change;
     stocksData.changePercent = response.query.results.quote.ChangeinPercent;
