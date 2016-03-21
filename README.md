@@ -1,3 +1,3 @@
 # project-two
 
-Investing in Stocks
+Investing in Stocks using Yahoo Finance API.
