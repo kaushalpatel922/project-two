@@ -4,52 +4,73 @@
     <meta charset="utf-8">
     <title>StocksInfo API</title>
     <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
-    <script src="main2.js" charset="utf-8"></script>
   </head>
   <body>
-    <h1> StocksInfo</h1>
-
-    <form action="stocks-form" id="stocks-form">
-      <label for="stocks-label">
-        <h5>Stock Ticker</h5>
-        <input type="text" id=stock-ticker placeholder="Enter Company Symbol">
-      </label>
-      <button id="search-button" class="search-button"type="button">Look Up</button>
-    </form>
-
-    <div id="stocks-info">
-    <!-- <h5><script src="http://charts.wikinvest.com/wikinvest/wikichart/javascript/scripts.php" type="text/javascript"></script><div id="wikichartContainer_510923CB-F7E3-D186-C6CA-8B2E607547B8"><div id="wikichartContainer_510923CB-F7E3-D186-C6CA-8B2E607547B8_noFlash" style="width:400px; display:none;"><a href="http://get.adobe.com/flashplayer/"><img src="http://cdn.wikinvest.com/wikinvest/images/adobe_flash_logo.gif" alt="Flash" style="border-width: 0px;"/><br/>Flash Player 9 or higher is required to view the chart<br/><strong>Click here to download Flash Player now</strong></a></div></div><script type="text/javascript">if (typeof(embedWikichart) != "undefined") {embedWikichart("http://charts.wikinvest.com/WikiChartMini.swf","wikichartContainer_510923CB-F7E3-D186-C6CA-8B2E607547B8","400","400",{"partner":"wikinvest","embedCodeDate":"2016-3-18","ticker":"NASDAQ:AAPL","showNewsIcons":"true","rollingDate":"5 days"},{});}</script><div style="font-size:9px;text-align:right;width:400px;font-family:Verdana"><a href="http://www.wikinvest.com/chart/NASDAQ:AAPL" style="text-decoration:underline; color:#0000ee;">View the full AAPL chart</a> at <a href="http://www.wikinvest.com/">Wikinvest</a></div></h5> -->
-
+    <div id="topBar">
+        <form>
+            <Input type="button" class="button" onClick="history.go(0)" value="Home">
+        </form>
+        <h1>Investing in Stocks</h1>
+        <div id=searchBar>
+            <form action="stocks-form" id="stocks-form">
+              <label for="stocks-label">
+                <h5>Stock Ticker</h5>
+                <input type="text" id=stock-ticker placeholder="Stock code, e.g. AAPL">
+              </label>
+              <button id="search-button" class="search-button"type="button">Look Up</button>
+            </form>
+        </div>
+    </div>
+    <div id="stocks-info"></div>
+    <div id="bottomBar">
+        <p class = "bottombar-paragraph">Have you thought investing in your future or retirement?</p>
+        <p class = "bottombar-paragraph">Absolutely! I want to invest in Berkshire Hathway, but don't even have close to enough money!!!</p>
+        <p class = "bottombar-paragraph">How the heck can I buy one share which costs over $200k?</p>
+        <p class = "bottombar-paragraph"><a href="https://www.motifinvesting.com/">Motif Investing</a> allows you to purchase a fraction of share by creating a MOTIF - <a href="https://www.motifinvesting.com/products/motifs">more details!</a></p>
     </div>
 
     <script id="stocks-template" class="stocks"type="x-handlebars-template">
       <div id="one">
         <p>Company: {{Name}}</p>
         <p>Symbol: {{symbol}}</p>
-        <p>Current Price: {{currentPrice}}</p>
-        <p>Change: {{change}}</p>
-        <p>Change %: {{changePercent}}</p>
-        <p>Last Time: {{time}}</p>
-        <p>Market Cap: {{marketCap}}</p>
+        <p id = "curr">Current Price: {{currentPrice}}</p>
+        <p>Change:
+            {{#if isStockUp}}
+                <span class="change-green">{{change}}</span>
+            {{else}}
+                <span class="change-red">{{change}}</span>
+            {{/if}}
+        </p>
+        <p>Change %:
+            {{#if isStockUp}}
+                <span class="change-green">{{changePercent}}</span>
+            {{else}}
+                <span class="change-red">{{changePercent}}</span>
+            {{/if}}
+        </p>
+        <p>Todays Volume: {{todayVolume}}</p>
         <p>Prev Close: {{previousClose}}</p>
+        <p>Market Cap: {{marketCap}}</p>
       </div>
 
-      <div id="two">
+      <div id="chart"></div>
 
+      <div id="two">
         <p>Open Price: {{openPrice}}</p>
-        <p>Day Low: {{daysLow}}</p>
-        <p>Day High: {{daysHigh}}</p>
-        <p>Year Low: {{yearsLow}}</p>
-        <p>Year High: {{yearsHigh}}</p>
-        <p>Todays Volume: {{todayVolume}}</p>
-        <p>Avg Vol(3m): {{threeMoAvg}}</p>
+        <p class="day">Day Low: {{daysLow}}</p>
+        <p class="day">Day High: {{daysHigh}}</p>
+        <p class="year">Year Low: {{yearsLow}}</p>
+        <p class="year">Year High: {{yearsHigh}}</p>
+        <p>Avg Vol (3m): {{threeMoAvg}}</p>
         <p>1yr Target: {{oneYearTarget}}</p>
-        <p>Div. Yield: {{dividendYield}}</h5>
+        <p>Div. Yield: {{dividendYield}}</p>
+        <p id="short">Short Ratio: {{shortRatio}}</p>
       </div>
 
     </script>
-
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+    <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
+    <script src="main.js" charset="utf-8"></script>
   </body>
 </html>
