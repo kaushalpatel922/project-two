@@ -108,7 +108,7 @@ searchButton.addEventListener("click", searchStock)
 setInterval(function() {
     console.log('Refreshing...')
     searchStock();
-}, 8000);
+}, 4000);
 
 var interval = setInterval(function() {
     check();
