@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>StocksInfo API</title>
+    <title>StocksInfo</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
@@ -14,8 +14,8 @@
         <div id=searchBar>
             <form action="stocks-form" id="stocks-form">
               <label for="stocks-label">
-                <h5>Stock Ticker</h5>
-                <input type="text" id=stock-ticker placeholder="Stock code, e.g. AAPL">
+                <h4>Stock Symbol</h4>
+                <input type="text" id=stock-ticker placeholder="Enter a stock symbol here, e.g. AAPL">
               </label>
               <button id="search-button" class="search-button"type="button">Look Up</button>
             </form>
@@ -23,9 +23,9 @@
     </div>
     <div id="stocks-info"></div>
     <div id="bottomBar">
-        <p class = "bottombar-paragraph">Have you thought investing in your future or retirement?</p>
-        <p class = "bottombar-paragraph">Absolutely! I want to invest in Berkshire Hathway, but don't even have close to enough money!!!</p>
-        <p class = "bottombar-paragraph">How the heck can I buy one share which costs over $200k?</p>
+        <p class = "bottombar-paragraph">Have you thought about investing in your future or retirement?</p>
+        <p class = "bottombar-paragraph">Absolutely! I want to invest in Berkshire Hathway, but don't even that much money!</p>
+        <p class = "bottombar-paragraph">I can't afford to buy one share of the company which costs over $200k.</p>
         <p class = "bottombar-paragraph"><a href="https://www.motifinvesting.com/">Motif Investing</a> allows you to purchase a fraction of share by creating a MOTIF - <a href="https://www.motifinvesting.com/products/motifs">more details!</a></p>
     </div>
 
@@ -48,7 +48,7 @@
                 <span class="change-red">{{changePercent}}</span>
             {{/if}}
         </p>
-        <p>Todays Volume: {{todayVolume}}</p>
+        <p>Today's Volume: {{todayVolume}}</p>
         <p>Prev Close: {{previousClose}}</p>
         <p>Market Cap: {{marketCap}}</p>
       </div>
