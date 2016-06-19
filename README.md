@@ -3,6 +3,8 @@ A Guide to Investing in your future or retirement!
 
 By: Kaushal Patel
 
+Demo: [Click Here](https://kaushalpatel922.github.io/project-two)
+
 How to use the app:
 Search for any US companies stock symbol/ticker and you will see the current stock price and other financial information about the company.
 
